@@ -1,22 +1,22 @@
 function solution(progresses, speeds) {
     const newProgresses = progresses.map((item, i) => Math.ceil((100 - item)/speeds[i]));
     
-    let result = [];
-    let min = newProgresses[0];
+    let resultNumArr = [];
+    let result = [newProgresses[0]];
     let count = 1;
     
     for(let i = 1; i<newProgresses.length; i++) {
-        if(min>=newProgresses[i]) {
-            count++;
+        if(result[0]>=newProgresses[i]) {
+            result.push(newProgresses[i]);
         }
         else {
-            result.push(count);
-            min = newProgresses[i];
-            count = 1;
+            resultNumArr.push(result.length);
+            result = [];
+            result.push(newProgresses[i]);
         }
     }
     
-    result.push(count);
+    resultNumArr.push(result.length);
     
-    return result;
+    return resultNumArr;
 }
