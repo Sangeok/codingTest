@@ -1,20 +1,18 @@
-
 function solution(participant, completion) {
     let map = new Map();
-
+    
     for(let i = 0; i<participant.length; i++) {
-        map.set(participant[i],(map.get(participant[i])+1 ||0));
+        let a = participant[i];
+        let b = completion[i];
+        
+        map.set(a, (map.get(a) || 0)+1);
+        map.set(b, (map.get(b) || 0)-1);
     }
     
-    for(let key of completion) {
-        map.set(key,(map.get(key)-1));
+    for(let [k,v] of map) {
+        if(v > 0) return k;
     }
     
-    for(let [key, value] of map) {
-        if(value >= 0) {
-            return key;
-        }
-    }
-    
-  
+    return "";
 }
+
