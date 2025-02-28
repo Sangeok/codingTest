@@ -1,14 +1,17 @@
 function solution(clothes) {
     let result = 1;
-    const obj = {};
+    let clothObj = {};
     
-    clothes.map(([cloth, clothField]) => {
-        obj[clothField] = (obj[clothField] + 1 || 1);
-    })
-    
-    for(let value of Object.values(obj)) {
-        result = result * (value+1);
+    for(const [k, v] of clothes) {
+        clothObj[v] = (clothObj[v] || 0) + 1;
     }
     
-    return result - 1;
+    for(let i of Object.values(clothObj)) {
+        result = result * (i+1);
+    }
+    
+    return result-1;
+    
 }
+
+
