@@ -11,5 +11,5 @@ function solution(s){
         }
     }
     
-    return stack.length === 0;
+    return stack.length === 0 ? true : false;
 }
