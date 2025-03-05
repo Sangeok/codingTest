@@ -1,5 +1,5 @@
 function solution(priorities, location) {
-    let count = 1;
+    let prioritiesObj = {};
     
     let queue = priorities.map((item, i) => {
         return {
@@ -8,19 +8,20 @@ function solution(priorities, location) {
         }
     })
     
+    let count = 1;
     while(queue.length > 0) {
-        let currentItem = queue.shift();
-        let hasHigherPriority = queue.some((item) => item.priority > currentItem.priority);
+        let nowPriority = queue.shift();
         
-        if(hasHigherPriority) {
-            queue.push(currentItem);
+        let isHigherPriority = queue.some((item) => item.priority > nowPriority.priority);
+        if(isHigherPriority) {
+            queue.push(nowPriority);
         }
         else {
-            if(currentItem.id === location) return count;
-            
+            if(nowPriority.id === location) return count;
             count++;
         }
     }
     
     return count;
+        
 }
