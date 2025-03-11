@@ -1,31 +1,22 @@
-// 입력 받기
 const fs = require('fs');
 const input = fs.readFileSync('/dev/stdin').toString().trim();
+const n = parseInt(input);
 
-// 문자열을 숫자로 변환
-const N = parseInt(input);
-
-function sugarDelivery(N) {
-  // 5kg 봉지를 최대한 사용
-  let fiveKgBags = Math.floor(N / 5);
+function test(n) {
+  let fiveBags = Math.floor(n / 5);
+  let remainN = n % 5;
   
-  // 남은 무게를 3kg 봉지로 채울 수 있는지 확인
-  while (fiveKgBags >= 0) {
-    const remainingWeight = N - (fiveKgBags * 5);
-    
-    // 남은 무게가 3kg 봉지로 정확히 나누어 떨어지는지 확인
-    if (remainingWeight % 3 === 0) {
-      const threeKgBags = remainingWeight / 3;
-      return fiveKgBags + threeKgBags;
+  while (fiveBags >= 0) {
+    if (remainN % 3 === 0) {
+      let threeBags = remainN / 3;
+      return fiveBags + threeBags;
     }
     
-    // 5kg 봉지를 하나 줄이고 다시 시도
-    fiveKgBags--;
+    fiveBags--;
+    remainN = remainN + 5;
   }
   
-  // 정확히 N kg을 만들 수 없는 경우
   return -1;
 }
 
-// 결과 출력
-console.log(sugarDelivery(N));
+console.log(test(n));
