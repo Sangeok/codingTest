@@ -1,5 +1,9 @@
 function solution(n) {
-    for(let i = 1; i<n; i++) {
-        if(n % i === 1) return i;
+    let count = 1;
+    while(n > count) {
+        if(n % count === 1) {
+            return count;
+        }
+        count++;
     }
 }
