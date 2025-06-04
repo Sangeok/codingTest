@@ -3,6 +3,6 @@ function solution(arr) {
     for(let i of arr) {
         sum = sum + i;
     }
-
-    return sum/arr.length;
+    
+    return sum / arr.length
 }
