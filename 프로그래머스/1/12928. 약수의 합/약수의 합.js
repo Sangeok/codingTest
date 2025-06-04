@@ -14,10 +14,8 @@ function getFactors(n) {
     for(let i = 1; i<=Math.sqrt(n); i++) {
         if(n % i === 0) {
             result.push(i);
-            
-            let share = n / i;
-            if(n % share === 0 && i !== share) {
-                result.push(share);
+            if(i !== n/i) {
+                result.push(n/i);
             }
         }
     }
