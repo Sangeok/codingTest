@@ -1,10 +1,10 @@
 function solution(n) {
-    let nArr = n.toString().split('');
-    let nRevserArr = [];
+    let reverseN = n.toString().split('').reverse();
     
-    for(let i = nArr.length-1; i>=0; i--) {
-        nRevserArr.push(parseInt(nArr[i]));
+    let result = [];
+    for(let i of reverseN) {
+        result.push(parseInt(i));
     }
     
-    return nRevserArr;
+    return result;
 }
