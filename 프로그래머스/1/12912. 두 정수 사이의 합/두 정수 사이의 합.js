@@ -1,12 +1,12 @@
 function solution(a, b) {
-    let min = a >= b ? b : a;
-    let max = a <= b ? b : a;
-    let sum = 0;
+    let maxN = a >= b ? a : b;
+    let minN = a < b ? a : b;
     
-    for(let i = min; i<=max; i++) {
-        sum = sum + i;
+    let result = 0;
+    for(let i = minN; i<=maxN; i++) {
+        result = result + i;
     }
     
-    return sum;
+    return result;
     
 }
