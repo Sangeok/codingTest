@@ -1,7 +1,14 @@
 function solution(x) {
-    let xStrArr = String(x).split('');
+    return isHarshad(x);
+}
+
+function isHarshad(x) {
+    let xString = x.toString().split('');
     let sum = 0;
-    xStrArr.forEach((item) => sum = sum + Number(item));
     
-    return x % sum === 0 ? true : false;
+    for(let i of xString) {
+        sum = sum + parseInt(i);
+    }
+    
+    return x % sum === 0;
 }
