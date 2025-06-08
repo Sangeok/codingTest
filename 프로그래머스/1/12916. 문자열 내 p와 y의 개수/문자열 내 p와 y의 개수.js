@@ -1,16 +1,13 @@
 function solution(s){
-    let sArr = s.split('');
-    let pNum = 0;
-    let yNum = 0;
+    let lowerS = s.toLowerCase();
     
-    for(let i = 0; i<sArr.length; i++) {
-        if(sArr[i].toLowerCase() === "p") {
-            pNum++;
-        }
-        else if(sArr[i].toLowerCase() === "y") {
-            yNum++;   
-        }
+    let countP = 0;
+    let countY = 0;
+    
+    for(let i of lowerS) {
+        if(i === 'p') countP++;
+        else if(i === 'y') countY++;
     }
     
-    return pNum === yNum ? true : false;
+    return countP === countY ? true : false
 }
