@@ -1,10 +1,13 @@
 function solution(n) {
-    let sqrtN = Math.sqrt(n);
-    let Decimal = isDecimal(sqrtN);
-    
-    return Decimal === true ? -1 : Math.pow(sqrtN+1,2);
+    if(isSquare(n)) {
+        let x = Math.sqrt(n);
+        return Math.pow(x+1,2);
+    } else {
+        return -1;
+    }
 }
 
-function isDecimal(n) {
-    return !Number.isInteger(n);
+function isSquare(n) {
+    let sqrtN = Math.sqrt(n);
+    return Number.isInteger(sqrtN);
 }
