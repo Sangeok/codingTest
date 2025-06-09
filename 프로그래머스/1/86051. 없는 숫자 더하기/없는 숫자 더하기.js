@@ -1,7 +1,13 @@
 function solution(numbers) {
-    let allNumbers = Array.from({length : 10}, (_, i) => i);
+    let allNumbers = Array.from({length:10}, (v,i) => i);
     
-    return allNumbers
-    .filter((item) => !numbers.includes(item))
-    .reduce((acc,cur) => acc + cur, 0);
+    let sum = 0;
+    
+    for(let i of allNumbers) {
+        if(!(numbers.includes(i))) {
+            sum = sum + i;
+        }
+    }
+    
+    return sum;
 }
