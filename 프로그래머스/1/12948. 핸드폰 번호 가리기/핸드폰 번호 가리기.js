@@ -1,10 +1,12 @@
 function solution(phone_number) {
-    const phone_numberArr = phone_number.split('');
-    const masked = phone_numberArr.map((item,i) => {
-        if(phone_number.length - i >4) {
-            return "*"
-        } else return item;
-    })
+    let phone_numberLength = phone_number.length;
+    let markArr = Array.from({length : phone_numberLength}).fill('*');
     
-    return masked.join('')
+    for(let i = phone_numberLength-4; i<phone_numberLength; i++) {
+        markArr[i] = phone_number[i];
+    }
+                             
+    let result = markArr.join('')
+    
+    return result;
 }
