@@ -1,6 +1,5 @@
 function solution(arr) {
-    if(arr.length <= 1) return [-1];
-    
+    if(arr.length === 1) return [-1];
     
     let min = Math.min(...arr);
     return arr.filter((item) => item !== min);
