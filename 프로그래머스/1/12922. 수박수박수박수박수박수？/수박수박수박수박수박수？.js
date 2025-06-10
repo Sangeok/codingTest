@@ -1,13 +1,11 @@
 function solution(n) {
-    let str = "수";
-    for(let i = 1; i<n; i++) {
-        if(i % 2 === 0) {
-            str = str + "수";
-        }
-        else {
-            str = str + "박";
-        }
+    let result = "수";
+    let count = 1;
+    while(count < n) {
+        if(count % 2 === 1) result = result + "박";
+        else result = result + "수";
+        count++
     }
     
-    return str;
+    return result;
 }
