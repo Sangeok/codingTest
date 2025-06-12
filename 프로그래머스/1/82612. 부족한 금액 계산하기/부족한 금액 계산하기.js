@@ -4,8 +4,6 @@ function solution(price, money, count) {
         sum = sum + price * i;
     }
     
-    if(money - sum > 0) {
-        return 0;
-    } else return sum - money
+    return sum - money > 0 ? sum - money : 0;
 
 }
