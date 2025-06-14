@@ -1,8 +1,8 @@
 function solution(sizes) {
-    const sortSizes = sizes.map(([w,h]) => [Math.max(w,h), Math.min(w,h)]);
+    let sortSizes = sizes.map(([w,h]) => [Math.min(w,h), Math.max(w,h)]);
     
-    const maxWidth = Math.max(...sortSizes.map(([w,h]) => w));
-    const maxHeight = Math.max(...sortSizes.map(([w,h]) => h));
+    let maxSizeInMin = Math.max(...sortSizes.map(([w,h]) => w));
+    let maxSizeInMax = Math.max(...sortSizes.map(([w,h]) => h));
     
-    return maxWidth * maxHeight;
+    return maxSizeInMin * maxSizeInMax;
 }
