@@ -1,15 +1,11 @@
 function solution(t, p) {
-    let pLength = p.split('').length;
-    let pNum = parseInt(p);
-    let count = 0;
-    
-    for(let i = 0; i<t.split('').length-pLength+1; i++) {
-        let newT = parseInt(t.slice(i,i+pLength));
-        if(newT <= pNum) {
-            count++;
+    let result = [];
+    for(let i = 0; i<t.length-p.length+1; i++) {
+        let tNum = parseInt(t.slice(i,i+p.length));
+        if(parseInt(p) >= tNum) {
+            result.push(tNum);
         }
     }
     
-    return count;
-    
+    return result.length;
 }
