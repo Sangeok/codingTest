@@ -4,7 +4,7 @@ function solution(n, m) {
 
 // 최소공배수
 function getLCM(n, m) {
-    return Math.abs(n * m) / getGCD(n,m);
+    return Math.abs(n*m) / getGCD(n,m);
 }
 
 // 최대공약수
