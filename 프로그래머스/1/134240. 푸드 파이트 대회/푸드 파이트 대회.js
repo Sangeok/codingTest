@@ -1,13 +1,10 @@
 function solution(food) {
-    let answer = [0];
-    for(let i = food.length-1; i>0; i--) {
-        let item = food[i];
-        let n = Math.floor(item/2);
-        for(let k = 0; k<n; k++) {
-            answer.push(i);
-            answer.unshift(i);
-        }
+    let answer = "";
+    
+    for(let i = 1; i<food.length; i++) {
+        let count = Math.floor(food[i]/2);
+        answer = answer + String(i).repeat(count);
     }
     
-    return answer.join('');
+    return answer + "0" + answer.split("").reverse().join("");
 }
