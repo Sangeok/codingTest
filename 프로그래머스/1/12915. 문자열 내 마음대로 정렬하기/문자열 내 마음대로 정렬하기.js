@@ -1,26 +1,10 @@
 function solution(strings, n) {
-    let charObjArr = [];
-    
-    for(let i = 0; i<strings.length; i++) {
-        let strArr = strings[i].split('');
-        let char = strArr[n];
+    return strings.sort((a, b) => {
+        if (a[n] < b[n]) return -1;
+        if (a[n] > b[n]) return 1;
         
-        let charObj = {
-            id : i,
-            str : strings[i],
-            char,
-        }
-        charObjArr.push(charObj);
-    }
-
-    charObjArr.sort((a,b) => {
-        if(a.char === b.char) {
-            return a.str.localeCompare(b.str);
-        }
-        else {
-            return a.char.localeCompare(b.char);
-        }
-    })
-    
-    return charObjArr.map((item) => item.str);
+        if (a < b) return -1;
+        if (a > b) return 1;
+        return 0;
+    });
 }
