@@ -1,4 +1,5 @@
 function solution(s) {
+    s = s.replaceAll("zero", "0");
     s = s.replaceAll("one", "1");
     s = s.replaceAll("two", "2");
     s = s.replaceAll("three", "3");
@@ -8,7 +9,6 @@ function solution(s) {
     s = s.replaceAll("seven", "7");
     s = s.replaceAll("eight", "8");
     s = s.replaceAll("nine", "9");
-    s = s.replaceAll("zero", "0");
-
-    return Number(s)
+    
+    return parseInt(s);
 }
