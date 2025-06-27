@@ -1,14 +1,16 @@
 function solution(name, yearning, photo) {
-    const obj = {};
     let result = [];
-    for(let i = 0; i<name.length; i++) {
-        obj[name[i]] = yearning[i];
+    let obj = {};
+    
+    for(let [index,value] of name.entries()) {
+        obj[value] = yearning[index];
     }
     
     for(let i = 0; i<photo.length; i++) {
+        let nowMemebers = photo[i];
         let sum = 0;
-        for(let j = 0; j<photo[i].length; j++) {
-            sum = sum + (obj[photo[i][j]] || 0);
+        for(let k of nowMemebers) {
+            sum = sum + (obj[k] || 0);
         }
         result.push(sum);
     }
