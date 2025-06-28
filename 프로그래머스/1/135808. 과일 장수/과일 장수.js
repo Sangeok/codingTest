@@ -1,10 +1,14 @@
 function solution(k, m, score) {
-    let result = 0;
     score.sort((a,b) => b-a);
     
-    for(let i = m-1; i<score.length; i = i + m) {
-        result = result + m * score[i];
+    let sum = 0;
+    for(let i = 0; i<score.length; i = i+m) {
+        let newArr = score.slice(i,i+m);
+        if(newArr.length !== m) continue;
+    
+        let p = Math.min(...newArr);
+        sum = sum + p * newArr.length;
     }
     
-    return result;
+    return sum;
 }
