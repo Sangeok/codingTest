@@ -1,12 +1,12 @@
 
 function solution(x, n) {
-    let result = [];
-    result.push(x);
+    let arr = [];
+    let nowNum = x;
     
-    for(let i = 2; i<=n; i++) {
-        let num = result[result.length-1];
-        result.push(num + x);
+    for(let i = 0; i<n; i++) {
+        arr.push(nowNum);
+        nowNum += x;
     }
     
-    return result;
+    return arr;
 }
