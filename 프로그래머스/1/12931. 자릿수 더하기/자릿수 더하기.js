@@ -1,11 +1,6 @@
 function solution(n)
 {
-    let strN = n.toString().split('');
-    let sum = 0;
-    
-    for(let i of strN) {
-        sum = sum + parseInt(i);
-    }
+    const sum = n.toString().split('').reduce((acc, cur) => acc + parseInt(cur), 0);
     
     return sum;
 }
