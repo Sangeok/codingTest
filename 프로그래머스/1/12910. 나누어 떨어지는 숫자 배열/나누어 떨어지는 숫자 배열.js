@@ -7,5 +7,7 @@ function solution(arr, divisor) {
         }
     }
     
-    return result.length === 0 ? [-1] : result.sort((a,b) => a-b);
+    result.sort((a,b) => a-b);
+    
+    return result.length > 0 ? result : [-1];
 }
