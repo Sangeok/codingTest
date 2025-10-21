@@ -1,14 +1,9 @@
 function solution(x) {
-    return isHarshad(x);
+    return isHazard(x);
 }
 
-function isHarshad(x) {
-    let xString = x.toString().split('');
-    let sum = 0;
+function isHazard(n) {
+    const sum = String(n).split('').reduce((acc, cur) => acc + Number(cur), 0);
     
-    for(let i of xString) {
-        sum = sum + parseInt(i);
-    }
-    
-    return x % sum === 0;
+    return n % sum === 0;
 }
