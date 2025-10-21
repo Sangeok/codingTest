@@ -1,13 +1,13 @@
 function solution(s){
-    let lowerS = s.toLowerCase();
+    let lowerCaseS = s.toLowerCase();
     
-    let countP = 0;
-    let countY = 0;
+    let numP = 0;
+    let numY = 0;
     
-    for(let i of lowerS) {
-        if(i === 'p') countP++;
-        else if(i === 'y') countY++;
+    for(let i of lowerCaseS) {
+        if(i === 'p') numP++;
+        else if(i === "y") numY++;
     }
     
-    return countP === countY ? true : false
+    return numP === numY;
 }
