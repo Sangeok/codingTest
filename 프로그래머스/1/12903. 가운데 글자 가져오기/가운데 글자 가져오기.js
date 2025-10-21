@@ -1,9 +1,15 @@
 function solution(s) {
-    let sArr = s.split('');
+    let sSize = s.length;
     
-    if(sArr.length % 2 === 0) {
-        return sArr[sArr.length/2-1]+sArr[sArr.length/2];
+    const isEven = sSize % 2 === 0;
+    
+    if(isEven) {
+        let num1 = Math.floor(sSize / 2)-1;
+        let num2 = num1 + 1;
+        
+        return s[num1] + s[num2];
     } else {
-        return sArr[Math.floor(sArr.length/2)]
+        let num = Math.floor(sSize / 2);
+        return s[num];
     }
 }
