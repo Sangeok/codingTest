@@ -1,12 +1,10 @@
 function solution(phone_number) {
-    let phone_numberLength = phone_number.length;
-    let markArr = Array.from({length : phone_numberLength}).fill('*');
+    const new_phone_number = phone_number.split('');
+    let canShowMinNum = new_phone_number.length-4;
     
-    for(let i = phone_numberLength-4; i<phone_numberLength; i++) {
-        markArr[i] = phone_number[i];
+    for(let i = 0; i<canShowMinNum; i++) {
+        new_phone_number[i] = "*";
     }
-                             
-    let result = markArr.join('')
     
-    return result;
+    return new_phone_number.join('')
 }
