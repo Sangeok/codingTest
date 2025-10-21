@@ -1,10 +1,7 @@
 function solution(n) {
-    let reverseN = n.toString().split('').reverse();
+    const reverseArr = n.toString().split('').reverse();
     
-    let result = [];
-    for(let i of reverseN) {
-        result.push(parseInt(i));
-    }
+    const pasetIntArr = reverseArr.map((n) => parseInt(n));
     
-    return result;
+    return pasetIntArr;
 }
