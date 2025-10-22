@@ -1,15 +1,20 @@
 function solution(s) {
-    s = s.split(' ');
-    let str = "";
-    for(let t of s) {
-        for(let [index, char] of [...t].entries()) {
-            if(index % 2 === 0) {
-                str = str + char.toUpperCase();
+    const arr = s.split(" ");
+    
+    for(let i = 0; i<arr.length; i++) {
+        let newStr = "";
+        for(let k = 0; k<arr[i].length; k++) {
+            // console.log("arr[i][k]", arr[i][k])
+            if(k % 2 === 0) {
+                newStr = newStr + arr[i][k].toUpperCase();
+            } else {
+                newStr = newStr + arr[i][k].toLowerCase();
             }
-            else str = str + char.toLowerCase();
         }
-        str = str + " ";
+        arr[i] = newStr;
     }
     
-    return str.slice(0,-1);
+    console.log(arr)
+    
+    return arr.join(' ')
 }
