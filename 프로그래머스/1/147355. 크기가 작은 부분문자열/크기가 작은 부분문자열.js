@@ -1,11 +1,10 @@
 function solution(t, p) {
-    let result = [];
-    for(let i = 0; i<t.length-p.length+1; i++) {
-        let tNum = parseInt(t.slice(i,i+p.length));
-        if(parseInt(p) >= tNum) {
-            result.push(tNum);
-        }
-    }
+    let count = 0;
     
-    return result.length;
+    for(let i = 0; i<=t.length-p.length; i++) {
+        const tSlice = t.slice(i, i+p.length);
+        console.log(tSlice)
+        if(tSlice <= p) count++;
+    }
+    return count;
 }
