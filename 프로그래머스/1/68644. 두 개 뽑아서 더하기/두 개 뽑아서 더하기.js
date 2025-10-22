@@ -1,11 +1,11 @@
 function solution(numbers) {
-    let result = new Set();
+    const set = new Set();
+    
     for(let i = 0; i<numbers.length; i++) {
         for(let k = i+1; k<numbers.length; k++) {
-            let sum = numbers[i] + numbers[k];
-            result.add(sum);
+            set.add(numbers[i] + numbers[k]);
         }
     }
     
-    return [...result].sort((a,b) => a-b);
+    return Array.from(set).sort((a,b) => a - b);
 }
