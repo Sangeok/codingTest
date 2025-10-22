@@ -1,10 +1,14 @@
 function solution(n) {
-    let result = "수";
+    let result = "";
     let count = 1;
-    while(count < n) {
-        if(count % 2 === 1) result = result + "박";
-        else result = result + "수";
-        count++
+    
+    while(n >= count) {
+        if(count % 2 === 0) {
+            result = result + "박";
+        } else {
+            result = result + "수";
+        }
+        count++;
     }
     
     return result;
