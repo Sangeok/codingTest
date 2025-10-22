@@ -1,30 +1,31 @@
 function solution(s, n) {
-    let lowerChar = [];
-    let upperChar = [];
-    let str = "";
-    
-    for(let i = 0; i<26; i++) {
-        lowerChar.push(String.fromCharCode(i + 97));
-        upperChar.push(String.fromCharCode(i + 65));
-    }
-    
+    let result = [];
     
     for(let i of s) {
-        let moveChar;
+        if(i === " ") {
+            result.push(" ");
+            continue;   
+        }
         
-        if(i === " "){
-            str = str + " ";
-        }
-        else if(i === i.toUpperCase()) {
-            let charNum = ((i.charCodeAt(0)+n) % 65) % 26;
-            str = str + upperChar[charNum];
-        }
-        else if(i === i.toLowerCase()) {
-            let charNum = ((i.charCodeAt(0)+n) % 97) % 26;
-            str = str + lowerChar[charNum];
+        if(isUpperCase(i)) {
+            const num = (i.charCodeAt(0) - 65 + n) % 26;
+            const numToStr = String.fromCharCode(num+65);
+            result.push(numToStr);
+        } else if(isLowerCase(i)) {
+            const num = (i.charCodeAt(0) - 97 + n) % 26; 
+            const numToStr = String.fromCharCode(num+97);
+            result.push(numToStr);
         }
     }
     
-    return str;
+    return result.join('')
     
+}
+
+function isUpperCase(char) {
+    return /[A-Z]/.test(char);
+}
+
+function isLowerCase(char) {
+    return /[a-z]/.test(char);
 }
