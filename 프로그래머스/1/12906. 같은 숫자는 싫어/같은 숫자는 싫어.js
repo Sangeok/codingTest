@@ -1,12 +1,4 @@
 function solution(arr)
 {
-    let result = [arr[0]];
-    
-    for(let i = 1; i<arr.length; i++) {
-        if(result[result.length-1] !== arr[i]) {
-            result.push(arr[i]);
-        }
-    }
-    
-    return result;
+    return arr.filter((val, index) => val !== arr[index-1]);
 }
