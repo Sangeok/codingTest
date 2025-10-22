@@ -1,6 +1,5 @@
 function solution(s) {
-    if(s.split('').length === 4 || s.split('').length === 6) {
+    if(s.length === 4 || s.length === 6) {
         return /^\d+$/.test(s);
-    }
-    else return false;
+    } else return false;
 }
