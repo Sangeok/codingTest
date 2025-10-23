@@ -1,10 +1,14 @@
 function solution(food) {
-    let answer = "";
+    let result = [0];
     
-    for(let i = 1; i<food.length; i++) {
-        let count = Math.floor(food[i]/2);
-        answer = answer + String(i).repeat(count);
+    for(let i = food.length-1; i>0; i--) {
+        const num = Math.floor(food[i]/2); // 한 쪽에 넣는 수
+        
+        for(let k = 0; k<num; k++) {
+            result.unshift(i);
+            result.push(i);
+        }
     }
     
-    return answer + "0" + answer.split("").reverse().join("");
+    return result.join('').toString();
 }
