@@ -1,22 +1,24 @@
 function solution(s, skip, index) {
-    // 알파벳에 대한 객체를 만들어야 할듯? 
-    // 사용 가능한 알파벳인지에 대한 유무 판별 객체
-    
-    // let alphabetMap = new Map();
-    let alphabetArr = [];
+    let alphabet = new Array(26).fill(true);
     let result = [];
     
-    for(let i = 0; i<26; i++) {
-        let char = String.fromCharCode(97 + i);
-        if(!skip.includes(char)) {
-            alphabetArr.push(char);
-        }
+    for(let i of skip) {
+        const index = i.charCodeAt(0)-97;
+        alphabet[index] = false;
     }
     
-    for(let char of s) {
-        let findIndex = alphabetArr.indexOf(char);
-        let newCharIndex = (findIndex+index)%alphabetArr.length;
-        result.push(alphabetArr[newCharIndex]);
+    for(let i of s) {
+        let currentWordToNum = i.charCodeAt(0)-97;
+        let count = 0;
+        while(count < index) {
+            currentWordToNum = (currentWordToNum + 1) % 26;
+            
+            if(alphabet[currentWordToNum]) {
+                count++
+            }
+        }
+        result.push(String.fromCharCode(currentWordToNum+97));
     }
-    return result.join('');
+
+    return result.join('')
 }
