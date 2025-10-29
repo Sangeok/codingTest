@@ -1,24 +1,25 @@
 function solution(s, skip, index) {
     let alphabet = new Array(26).fill(true);
-    let result = [];
+    let result = "";
     
     for(let i of skip) {
-        const index = i.charCodeAt(0)-97;
+        const index = i.charCodeAt(0) - 97;
         alphabet[index] = false;
     }
     
     for(let i of s) {
-        let currentWordToNum = i.charCodeAt(0)-97;
         let count = 0;
+        let currentCharIndex = i.charCodeAt(0) - 97;
+        
         while(count < index) {
-            currentWordToNum = (currentWordToNum + 1) % 26;
+            currentCharIndex = (currentCharIndex + 1) % 26;
             
-            if(alphabet[currentWordToNum]) {
-                count++
+            if(alphabet[currentCharIndex]) {
+                count++;
             }
         }
-        result.push(String.fromCharCode(currentWordToNum+97));
+        result = result + String.fromCharCode(currentCharIndex+97);
     }
-
-    return result.join('')
+    
+    return result;
 }
