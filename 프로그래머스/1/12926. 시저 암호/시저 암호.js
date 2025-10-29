@@ -2,24 +2,22 @@ function solution(s, n) {
     let result = [];
     
     for(let i of s) {
-        if(i === " ") {
-            result.push(" ");
-            continue;   
-        }
-        
         if(isUpperCase(i)) {
-            const num = (i.charCodeAt(0) - 65 + n) % 26;
-            const numToStr = String.fromCharCode(num+65);
-            result.push(numToStr);
-        } else if(isLowerCase(i)) {
-            const num = (i.charCodeAt(0) - 97 + n) % 26; 
-            const numToStr = String.fromCharCode(num+97);
-            result.push(numToStr);
+            const charToNum = i.charCodeAt(0) - 65;
+            const moveCharAtNum = (charToNum + n) % 26 + 65;
+            const numToChar = String.fromCharCode(moveCharAtNum);
+            result.push(numToChar);
+        } else if (isLowerCase(i)) {
+            const charToNum = i.charCodeAt(0) - 97;
+            const moveCharAtNum = (charToNum + n) % 26 + 97;
+            const numToChar = String.fromCharCode(moveCharAtNum);
+            result.push(numToChar);
+        } else {
+            result.push(" ");
         }
     }
     
     return result.join('')
-    
 }
 
 function isUpperCase(char) {
