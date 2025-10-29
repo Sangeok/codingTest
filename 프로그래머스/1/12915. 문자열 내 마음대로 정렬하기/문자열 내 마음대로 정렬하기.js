@@ -12,6 +12,8 @@ function solution(strings, n) {
             return -1;
         }
         
-        if(a > b) return 1;
+        if(a > b) {
+            return 1;
+        }
     })
 }
