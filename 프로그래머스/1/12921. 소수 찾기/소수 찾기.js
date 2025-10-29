@@ -3,13 +3,11 @@ function solution(n) {
     isPrime[0] = false;
     isPrime[1] = false;
     
-    for(let i = 2; i*i <=n; i++) {
-        if(isPrime[i]) {
-            for(let j = i * i; j<=n; j=j+i) {
-                isPrime[j] = false;
-            }
+    for(let i = 2; i*i<=n; i++) {
+        for(let j = i * i; j<=n; j = j + i) {
+            isPrime[j] = false;
         }
     }
     
-    return isPrime.filter(x => x === true).length;
+    return isPrime.filter((x) => x === true).length;
 }
