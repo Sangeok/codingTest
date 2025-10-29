@@ -1,34 +1,35 @@
 function solution(keymap, targets) {
-    const minPressMap = new Map();
+    const minPress = new Map();
     
-    for(let keyString of keymap) {
-        for(let i = 0; i<keyString.length; i++) {
-            const char = keyString[i];
-            const press = i + 1;
+    for(let str of keymap) {
+        for(let i = 0; i<str.length; i++) {
+            const pressNum = i+1;
+            const getMinPressNum = minPress.get(str[i]) || Infinity;
             
-            const currentMin = minPressMap.get(char) || Infinity;
-            
-            if(press < currentMin){
-                minPressMap.set(char, press);
+            if(pressNum < getMinPressNum) {
+                minPress.set(str[i], pressNum);
             }
         }
     }
     
     let result = [];
-    for(let target of targets) {
+    for(let str of targets) {
         let sum = 0;
-        for(let i = 0; i<target.length; i++) {
-            const currentChar = target[i];
-            const getMinNum = minPressMap.get(currentChar);
+        let findTarget = true;
+        
+        for(let i = 0; i<str.length; i++) {
+            const currentChar = str[i];
+            const getMinPressNum = minPress.get(currentChar);
             
-            if(getMinNum === undefined) {
-                sum = -1;
+            if(getMinPressNum === undefined) {
+                result.push(-1);
+                findTarget = false;
                 break;
             }
             
-            sum = sum + getMinNum;
+            sum = sum + getMinPressNum;
         }
-        result.push(sum)
+        if(findTarget) result.push(sum)
     }
     
     return result;
