@@ -12,7 +12,7 @@ function solution(strings, n) {
             return -1;
         }
         
-        if(a > b) {
+        if(a>b) {
             return 1;
         }
     })
