@@ -3,22 +3,23 @@ function solution(s, skip, index) {
     let result = "";
     
     for(let i of skip) {
-        const index = i.charCodeAt(0) - 97;
-        alphabet[index] = false;
+        const num = i.charCodeAt(0) - 97;
+        alphabet[num] = false;
     }
     
     for(let i of s) {
+        let currentCharNum = i.charCodeAt(0) - 97;
         let count = 0;
-        let currentCharIndex = i.charCodeAt(0) - 97;
         
         while(count < index) {
-            currentCharIndex = (currentCharIndex + 1) % 26;
+            currentCharNum = (currentCharNum + 1) % 26;
             
-            if(alphabet[currentCharIndex]) {
+            if(alphabet[currentCharNum]) {
                 count++;
             }
         }
-        result = result + String.fromCharCode(currentCharIndex+97);
+        
+        result = result + String.fromCharCode((currentCharNum % 26) + 97);
     }
     
     return result;
