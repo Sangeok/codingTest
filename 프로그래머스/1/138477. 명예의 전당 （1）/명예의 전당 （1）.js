@@ -9,9 +9,11 @@ function solution(k, score) {
         
         if(legend.length > k) {
             legend.pop();
+            result.push(legend[legend.length-1]);
+        } else {
+            result.push(legend[legend.length-1]);
         }
         
-        result.push(legend[legend.length-1]);
     }
     
     return result;
