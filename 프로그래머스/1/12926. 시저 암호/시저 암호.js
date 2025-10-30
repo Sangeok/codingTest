@@ -3,21 +3,19 @@ function solution(s, n) {
     
     for(let i of s) {
         if(isUpperCase(i)) {
-            const charToNum = i.charCodeAt(0) - 65;
-            const moveCharAtNum = (charToNum + n) % 26 + 65;
-            const numToChar = String.fromCharCode(moveCharAtNum);
-            result.push(numToChar);
-        } else if (isLowerCase(i)) {
-            const charToNum = i.charCodeAt(0) - 97;
-            const moveCharAtNum = (charToNum + n) % 26 + 97;
-            const numToChar = String.fromCharCode(moveCharAtNum);
-            result.push(numToChar);
+            const num = i.charCodeAt(0) - 65;
+            const movedNum = (num + n) % 26;
+            result.push(String.fromCharCode(movedNum + 65))
+        } else if(isLowerCase(i)) {
+            const num = i.charCodeAt(0) - 97;
+            const movedNum = (num + n) % 26;
+            result.push(String.fromCharCode(movedNum + 97))
         } else {
             result.push(" ");
         }
     }
     
-    return result.join('')
+    return result.join('');
 }
 
 function isUpperCase(char) {
