@@ -1,15 +1,14 @@
 function solution(keymap, targets) {
-    const minPress = new Map();
+    let minPressObj = new Map();
     
     for(let str of keymap) {
-        for(let j = 0; j<str.length; j++) {
-            const pressNum = j+1;
-            const currentChar = str[j];
+        for(let i = 0; i<str.length; i++) {
+            let currentChar = str[i];
+            let press = i+1;
             
-            const getMinPress = minPress.get(currentChar) || Infinity;
-            
-            if(pressNum < getMinPress) {
-                minPress.set(currentChar, pressNum);
+            let getMinPress = minPressObj.get(currentChar) || Infinity;
+            if(press < getMinPress) {
+                minPressObj.set(currentChar, press);
             }
         }
     }
@@ -17,25 +16,23 @@ function solution(keymap, targets) {
     let result = [];
     for(let target of targets) {
         let sum = 0;
-        let noHaveChar = false;
+        let cantFindMinPress = false;
         
-        for(let j = 0; j<target.length; j++) {
-            const currentChar = target[j];
-            
-            const getMinPress = minPress.get(currentChar);
+        for(let i = 0; i<target.length; i++) {
+            const currentChar = target[i];
+            const getMinPress = minPressObj.get(currentChar);
             
             if(getMinPress === undefined) {
                 result.push(-1);
-                noHaveChar = true;
+                cantFindMinPress = true;
                 break;
             }
             
             sum = sum + getMinPress;
         }
         
-        if(!noHaveChar) {
+        if(!cantFindMinPress) {
             result.push(sum);
-            noHaveChar = false;
         }
     }
     
