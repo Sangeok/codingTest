@@ -1,28 +1,33 @@
 function solution(X, Y) {
-    let countX = Array(10).fill(0);
-    let countY = Array(10).fill(0);
+    let answer = [];
     
-    for(let x of X) {
-        countX[x]++;
+    const countX = new Array(10).fill(0);
+    const countY = new Array(10).fill(0);
+    
+    for(let number of X) {
+        countX[Number(number)]++;
     }
     
-    for(let y of Y) {
-        countY[y]++;
+    for(let number of Y) {
+        countY[Number(number)]++;
     }
     
-    let result = '';
     for(let i = 9; i>=0; i--) {
-        let minCount = Math.min(countX[i], countY[i]);
-        result = result + String(i).repeat(minCount);
+        const minNum = Math.min(countX[i], countY[i]);
+        
+        answer.push(String(i).repeat(minNum));
     }
     
-    if(result === '') {
+    const result = answer.join('');
+    
+    if(result.length === 0) {
         return "-1";
     }
     
-    if(result[0] === '0') {
+    if(result[0] === "0") {
         return "0";
     }
     
     return result;
+
 }
