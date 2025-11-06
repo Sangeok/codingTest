@@ -6,7 +6,7 @@ function solution(n) {
     
     for(let i = 2; i*i<=n; i++) {
         if(isPrime[i]) {
-            for(let j = i * i; j<=n; j=j+i) {
+            for(let j = i * i; j<=n; j = j + i) {
                 isPrime[j] = false;
             }
         }
