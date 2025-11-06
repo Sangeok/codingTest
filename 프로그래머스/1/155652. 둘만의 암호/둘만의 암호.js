@@ -2,23 +2,25 @@ function solution(s, skip, index) {
     let alphabet = new Array(26).fill(true);
     let result = "";
     
-    for(let skip_char of skip) {
-        let skip_charNUm = skip_char.charCodeAt(0) - 97;
-        alphabet[skip_charNUm] = false;
+    for(let char of skip) {
+        let currentCharNum = char.charCodeAt(0) - 97;
+        alphabet[currentCharNum] = false;
     }
     
-    for(let s_char of s) {
-        let charToNum = s_char.charCodeAt(0) - 97;
+    for(let char of s) {
+        let currentCharNum = char.charCodeAt(0) - 97;
         let count = 0;
         
         while(count < index) {
-            charToNum = (charToNum + 1) % 26;
-            
-            if(alphabet[charToNum]) {
+            if(alphabet[(currentCharNum + 1) % 26]) {
                 count++;
+                currentCharNum = (currentCharNum + 1) % 26;
+            } else {
+                currentCharNum = (currentCharNum + 1) % 26;
             }
         }
-        result = result + String.fromCharCode((charToNum + 97));
+        
+        result = result + String.fromCharCode(currentCharNum + 97);
     }
     
     return result;
