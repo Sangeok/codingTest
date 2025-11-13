@@ -8,20 +8,17 @@ function solution(new_id) {
     result = result.replace(/^\.|\.$/g, '');
     
     if(result.length === 0) {
-        result = result + "a";
+        result = "a";
     }
     
     if(result.length >= 16) {
-        result = result.substring(0, 15);
+        result = result.substring(0,15);
         result = result.replace(/\.$/, '');
     }
     
-    if(result.length <= 2) {
+    while(result.length <= 2) {
         let lastChar = result[result.length-1];
-        
-        while(result.length < 3) {
-            result = result + lastChar;
-        }
+        result = result + lastChar;
     }
     
     return result;
