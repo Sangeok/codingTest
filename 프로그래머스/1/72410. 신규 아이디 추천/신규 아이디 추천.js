@@ -13,12 +13,13 @@ function solution(new_id) {
     
     if(result.length >= 16) {
         result = result.substring(0,15);
-        result = result.replace(/\.$/, '');
+        if(result[result.length-1] === ".") {
+            result = result.slice(0,-1);
+        }
     }
     
     while(result.length <= 2) {
-        let lastChar = result[result.length-1];
-        result = result + lastChar;
+        result = result + result[result.length-1];
     }
     
     return result;
