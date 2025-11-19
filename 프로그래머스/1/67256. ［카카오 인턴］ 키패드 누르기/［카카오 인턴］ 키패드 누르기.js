@@ -1,5 +1,5 @@
 function solution(numbers, hand) {
-    let answer = '';
+    let result = '';
     
     let keypadCoord = {
         1 : [0,0],
@@ -22,34 +22,36 @@ function solution(numbers, hand) {
     for(let number of numbers) {
         if([1,4,7].includes(number)) {
             currentLeftHands = number;
-            answer = answer + "L";
+            result = result + "L";
         } else if([3,6,9].includes(number)) {
-            currentRightHands = number;
-            answer = answer + "R";
+            currentRightHands = number
+            result = result + "R";
         } else {
-            let leftToDistance = getDistance(keypadCoord[currentLeftHands], keypadCoord[number]);
-            let rightToDistance = getDistance(keypadCoord[currentRightHands], keypadCoord[number]);
-            if(leftToDistance > rightToDistance) {
+            let leftHandsDistance = getDistance(keypadCoord[currentLeftHands], keypadCoord[number]);
+            let rightHandsDistance = getDistance(keypadCoord[currentRightHands], keypadCoord[number]);
+            
+            if(leftHandsDistance > rightHandsDistance) {
                 currentRightHands = number;
-                answer = answer + "R";
-            } else if(leftToDistance < rightToDistance) {
+                result = result + "R"
+            } else if(leftHandsDistance < rightHandsDistance) {
                 currentLeftHands = number;
-                answer = answer + "L";
+                result = result + "L";
             } else {
                 if(hand === "right") {
                     currentRightHands = number;
-                    answer = answer + "R";
-                } else if (hand === "left") {
+                    result = result + "R"
+                } else if(hand === "left") {
                     currentLeftHands = number;
-                    answer = answer + "L";
+                    result = result + "L";
                 }
             }
         }
     }
     
-    return answer;
+    return result;
 }
 
 function getDistance(pos1, pos2) {
     return Math.abs(pos1[0] - pos2[0]) + Math.abs(pos1[1] - pos2[1]);
 }
+
