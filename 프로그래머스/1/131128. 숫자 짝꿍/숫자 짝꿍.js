@@ -1,15 +1,15 @@
 function solution(X, Y) {
-    let result = "";
+    let result = '';
     
     let countX = new Array(10).fill(0);
     let countY = new Array(10).fill(0);
     
-    for(let num of X) {
-        countX[num]++;
+    for(let i of X) {
+        countX[i]++;
     }
     
-    for(let num of Y) {
-        countY[num]++;
+    for(let i of Y) {
+        countY[i]++;
     }
     
     for(let i = 9; i>=0; i--) {
