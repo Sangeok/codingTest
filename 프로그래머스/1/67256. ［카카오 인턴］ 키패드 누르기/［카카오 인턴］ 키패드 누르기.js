@@ -1,7 +1,7 @@
 function solution(numbers, hand) {
-    let result = '';
+    let result = ''
     
-    let keypadCoord = {
+    let keypadCoords = {
         1 : [0,0],
         2 : [0,1],
         3 : [0,2],
@@ -24,25 +24,24 @@ function solution(numbers, hand) {
             currentLeftHands = number;
             result = result + "L";
         } else if([3,6,9].includes(number)) {
-            currentRightHands = number
+            currentRightHands = number;
             result = result + "R";
         } else {
-            let leftHandsDistance = getDistance(keypadCoord[currentLeftHands], keypadCoord[number]);
-            let rightHandsDistance = getDistance(keypadCoord[currentRightHands], keypadCoord[number]);
-            
-            if(leftHandsDistance > rightHandsDistance) {
+            let leftToDistance = getDistance(keypadCoords[number], keypadCoords[currentLeftHands]); 
+            let rightToDistance = getDistance(keypadCoords[number], keypadCoords[currentRightHands]); 
+            if(leftToDistance > rightToDistance) {
                 currentRightHands = number;
-                result = result + "R"
-            } else if(leftHandsDistance < rightHandsDistance) {
+                result = result + "R";
+            } else if(leftToDistance < rightToDistance) {
                 currentLeftHands = number;
                 result = result + "L";
             } else {
-                if(hand === "right") {
-                    currentRightHands = number;
-                    result = result + "R"
-                } else if(hand === "left") {
+                if(hand === "left") {
                     currentLeftHands = number;
                     result = result + "L";
+                } else {
+                    currentRightHands = number;
+                    result = result + "R";
                 }
             }
         }
