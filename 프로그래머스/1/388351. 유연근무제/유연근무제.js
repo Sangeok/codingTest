@@ -1,19 +1,18 @@
 function solution(schedules, timelogs, startday) {
     let result = 0;
-    
     for(let i = 0; i<timelogs.length; i++) {
+        let currentLogs = timelogs[i];
+        let currentSchedule = getMinTime(schedules[i]+10);
         let count = 0;
-        let currentStartDay = startday;
-        let currentSchedule = schedules[i];
-        for(let k = 0; k<timelogs[i].length; k++) {
-            let currentTimelog = timelogs[i][k];
-            currentStartDay = currentStartDay % 7;
-            let NoWorkDay = currentStartDay === 6 || currentStartDay === 0;
+        
+        for(let k = 0; k<currentLogs.length; k++) {
+            let currentLog = currentLogs[k];
             
-            if(calTime(currentSchedule+10) >= currentTimelog && !NoWorkDay) {
-                count++;
-            }
-            currentStartDay = currentStartDay + 1;
+            let NoWorkDay = ((startday + k) % 7) === 6 || ((startday + k) % 7) === 0;
+            if(NoWorkDay) continue;
+            
+            if(currentSchedule >= getMinTime(currentLog)) count++;
+            else break;
         }
         
         if(count === 5) result++;
@@ -23,11 +22,8 @@ function solution(schedules, timelogs, startday) {
     
 }
 
-function calTime(time) {
-    if (time % 100 >= 60) {
-        const min = time % 100 - 60;
-        const hour = Math.floor(time / 100) + 1;
-        return hour * 100 + min; 
-    }
-    return time;
+function getMinTime(time) {
+    const hour = Math.floor(time / 100);
+    const min = time % 100;
+    return hour * 60 + min;
 }
