@@ -1,22 +1,21 @@
-const fs = require('fs');
-const input = fs.readFileSync('/dev/stdin').toString().trim();
-const n = parseInt(input);
+var input = require("fs").readFileSync("/dev/stdin").toString().split(" ");
+var a = parseInt(input[0]);
 
-function solution(n) {
+console.log(soltuion(a));
+
+function soltuion(num) {
   let count = 0;
-  let init = 666;
-  
+  let currentNum = 666;
+
   while (true) {
-    if (init.toString().includes("666")) {
-      count = count + 1;
+    if (String(currentNum).includes("666")) {
+      count++;
     }
-    
-    if (n === count) {
-      return init;
+
+    if (num === count) {
+      return currentNum;
     }
-    
-    init = init + 1;
+
+    currentNum++;
   }
 }
-
-console.log(solution(n));
