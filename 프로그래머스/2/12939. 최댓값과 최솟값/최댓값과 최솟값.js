@@ -1,8 +1,9 @@
 function solution(s) {
-    let sArr = s.split(' ');
+    let sStr = s.split(" ");
     
-    let max = Math.max(...sArr).toString();
-    let min = Math.min(...sArr).toString();
+    let max = Math.max(...sStr);
+    let min = Math.min(...sStr);
     
     return min + " " + max;
+    
 }
