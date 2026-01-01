@@ -1,26 +1,21 @@
-const fs = require('fs');
-const input = fs.readFileSync('/dev/stdin').toString().trim().split('\n');
+var input = require("fs").readFileSync("/dev/stdin").toString().trim().split("\n");
+var n = Number(input.shift());
 
-const N = parseInt(input[0]);
-const points = [];
+const coords = input.map((line) => line.trim().split(" ").map(Number));
 
-for (let i = 1; i <= N; i++) {
-  const [x, y] = input[i].split(' ').map(Number);
-  points.push([x, y]);
-}
-
-// 정렬
-points.sort((a, b) => {
-  if (a[0] === b[0]) {
-    return a[1] - b[1];
+coords.sort((a, b) => {
+  if (a[0] !== b[0]) {
+    return a[0] - b[0];
   }
-  return a[0] - b[0];
+
+  return a[1] - b[1];
 });
 
-// 출력 형식에 맞게 결과 출력
-let result = '';
-for (const [x, y] of points) {
-  result += `${x} ${y}\n`;
+let results = [];
+for (let i = 0; i < n; i++) {
+  if (coords[i].length < 2) continue;
+
+  results.push(`${coords[i][0]} ${coords[i][1]}`);
 }
 
-console.log(result.trim());
+console.log(results.join("\n"));
