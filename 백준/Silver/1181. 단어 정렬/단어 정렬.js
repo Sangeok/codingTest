@@ -1,25 +1,18 @@
-const fs = require('fs');
-const input = fs.readFileSync('/dev/stdin').toString().trim().split('\n');
+var input = require("fs").readFileSync("/dev/stdin").toString().trim().split("\n");
+var n = Number(input.shift());
 
-const N = parseInt(input[0]);
-const words = [];
+const words = input.map((line) => line.trim());
 
-for (let i = 1; i <= N; i++) {
-  words.push(input[i]);
-}
+const wordSet = new Set(words);
 
-function solution(words) {
-  let removeDupWords = [...new Set(words)];
+const newWords = [...wordSet];
 
-  removeDupWords.sort((a, b) => {
-    if (a.length === b.length) {
-      return a.localeCompare(b);
-    }
+newWords.sort((a, b) => {
+  if (a.length !== b.length) {
     return a.length - b.length;
-  });
+  }
 
-  return removeDupWords;
-}
+  return a.localeCompare(b);
+});
 
-const result = solution(words);
-console.log(result.join('\n'));
+console.log(newWords.join("\n"));
