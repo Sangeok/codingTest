@@ -1,15 +1,14 @@
 function solution(s){
     let stack = [];
     
-    for(let char of s) {
-        if(char === "(") {
-            stack.push(char);
-        }
-        else {
-            if(stack.length === 0) return false;
+    for(let i of s) {
+        stack.push(i);
+        
+        while(stack[stack.length-1] === ")" && stack[stack.length-2] === "(") {
+            stack.pop();
             stack.pop();
         }
     }
     
-    return stack.length === 0 ? true : false;
+    return stack.length === 0 ? true : false
 }
