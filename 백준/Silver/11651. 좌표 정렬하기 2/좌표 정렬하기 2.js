@@ -1,20 +1,21 @@
-const fs = require('fs');
-const input = fs.readFileSync('/dev/stdin').toString().trim().split('\n');
+var input = require("fs").readFileSync("/dev/stdin").toString().trim().split("\n");
+var n = Number(input.shift());
 
-const n = parseInt(input[0]);
-const points = [];
+const coords = input.map((line) => line.trim().split(" ").map(Number));
 
-for (let i = 1; i <= n; i++) {
-  const [x, y] = input[i].split(' ').map(Number);
-  points.push([x, y]);
-}
-
-points.sort((a, b) => {
-  if (a[1] === b[1]) {
-    return a[0] - b[0];
+coords.sort((a, b) => {
+  if (a[1] !== b[1]) {
+    return a[1] - b[1];
   }
-  return a[1] - b[1];
+
+  return a[0] - b[0];
 });
 
-const result = points.map(point => point.join(' ')).join('\n');
-console.log(result);
+let results = [];
+for (let i = 0; i < n; i++) {
+  if (coords[i].length < 2) continue;
+
+  results.push(`${coords[i][0]} ${coords[i][1]}`);
+}
+
+console.log(results.join("\n"));
