@@ -1,32 +1,14 @@
-// function solution(s)
-// {
-//     let stack = [];
-    
-//     for(let i = 0; i<s.length; i++) {
-//         let currentChar = s[i];
-        
-//         if(stack[stack.length -1] === currentChar) {
-//             stack.pop();
-//         }
-//         else {
-//             stack.push(currentChar);
-//         }
-//     }
-    
-//     return stack.length === 0 ? 1 : 0;
-// }
-
 function solution(s) {
     let stack = [];
     
-    for(let i = 0; i<s.length; i++) {
-        if(stack[stack.length-1] === s[i]) {
+    for(let char of s) {
+        stack.push(char);
+        
+        while(stack.length >= 2 && (stack[stack.length-1] === stack[stack.length-2])) {
             stack.pop();
-        }
-        else {
-            stack.push(s[i]);
+            stack.pop();
         }
     }
     
-    return stack.length === 0 ? 1 : 0;
+    return stack.length > 0 ? 0 : 1
 }
