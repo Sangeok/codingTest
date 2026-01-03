@@ -1,14 +1,10 @@
 function solution(n) {
-    if(n === 2) return 1;
+    let fib = [0,1];
     
-    let fibo1 = 1;
-    let fibo2 = 1;
-    
-    for(let i = 3; i<=n; i++) {
-        let result = (fibo1 + fibo2) % 1234567;
-        fibo1 = fibo2;
-        fibo2 = result;
+    for(let i = 2; i<=n; i++) {
+        fib[i] = (fib[i-1] + fib[i-2]) % 1234567;
     }
     
-    return fibo2;
+    return fib[n];
 }
+
