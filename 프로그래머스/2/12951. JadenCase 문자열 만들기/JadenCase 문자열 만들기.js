@@ -1,20 +1,18 @@
 function solution(s) {
-    let sReplace = s.replaceAll(' ',"-");
-    let sArr = sReplace.split('');
+    let result = []
+    let sArr = s.split(" ");
     
-    if(isNaN(sArr[0])) {
-        sArr[0] = sArr[0].toUpperCase();
-    }
-    
-    
-    for(let i = 1; i<sArr.length; i++) {
-        if(sArr[i] === "-") continue;
-        
-        if(isNaN(sArr[i]) && sArr[i-1] === "-") {
-            sArr[i] = sArr[i].toUpperCase();
+    for(let str of sArr) {
+        let strSplit = str.split("");
+        for(let i = 0; i<strSplit.length; i++) {
+            if(i === 0) {
+                strSplit[0] = strSplit[0].toUpperCase();
+            } else {
+                strSplit[i] = strSplit[i].toLowerCase();
+            }
         }
-        else sArr[i] = sArr[i].toLowerCase();
+        result.push(strSplit.join(''));
     }
     
-    return sArr.join('').replaceAll('-',' ');
+    return result.join(' ');
 }
