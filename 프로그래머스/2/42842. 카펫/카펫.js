@@ -5,9 +5,11 @@ function solution(brown, yellow) {
         if(total % h === 0) {
             let w = total / h;
             
-            if(((w-2) * (h-2)) === yellow) {
+            if((h-2) * (w-2) === yellow) {
                 return [w,h];
             }
         }
     }
+    
+    return [];
 }
