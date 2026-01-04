@@ -1,22 +1,21 @@
-const fs = require('fs');
-const input = fs.readFileSync('/dev/stdin').toString().trim();
-const n = parseInt(input);
+var N = require("fs").readFileSync("/dev/stdin").toString().trim();
+N = Number(N);
 
-function test(n) {
-  let fiveBags = Math.floor(n / 5);
-  let remainN = n % 5;
-  
-  while (fiveBags >= 0) {
-    if (remainN % 3 === 0) {
-      let threeBags = remainN / 3;
-      return fiveBags + threeBags;
-    }
-    
-    fiveBags--;
-    remainN = remainN + 5;
+let count = 0;
+
+while (true) {
+  if (N % 5 === 0) {
+    count = count + N / 5;
+    break;
   }
-  
-  return -1;
+
+  N = N - 3;
+  count++;
+
+  if (N < 0) {
+    count = -1;
+    break;
+  }
 }
 
-console.log(test(n));
+console.log(count);
