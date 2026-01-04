@@ -1,13 +1,9 @@
 var input = require("fs").readFileSync("/dev/stdin").toString().trim().split("\n");
-var n = Number(input.shift());
+let N = Number(input.shift());
 
-const words = input.map((line) => line.trim());
+let setWords = [...new Set(input)];
 
-const wordSet = new Set(words);
-
-const newWords = [...wordSet];
-
-newWords.sort((a, b) => {
+setWords.sort((a, b) => {
   if (a.length !== b.length) {
     return a.length - b.length;
   }
@@ -15,4 +11,4 @@ newWords.sort((a, b) => {
   return a.localeCompare(b);
 });
 
-console.log(newWords.join("\n"));
+console.log(setWords.join("\n"));
