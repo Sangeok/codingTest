@@ -1,26 +1,20 @@
-const fs = require('fs');
-const input = fs.readFileSync('/dev/stdin').toString().trim().split('\n');
+var input = require("fs").readFileSync("/dev/stdin").toString().trim().split("\n");
 
-const N = parseInt(input[0]);
-const strArr = input[1].split(' ').map(Number);
-const M = parseInt(input[2]);
-const checkStrArr = input[3].split(' ').map(Number);
+let N = Number(input[0]);
+let nArr = input[1].split(" ").map(Number);
 
-function solution(strArr, checkStrArr) {
-  let obj = {};
-  let result = [];
-  
-  for (let str of strArr) {
-    obj[str] = (obj[str] || 0) + 1;
-  }
-  
-  for (let checkStr of checkStrArr) {
-    let count = obj[checkStr] || 0;
-    result.push(count);
-  }
-  
-  return result;
+let M = Number(input[2]);
+let mArr = input[3].split(" ").map(Number);
+
+let result = [];
+let numObj = {};
+
+for (let num of nArr) {
+  numObj[num] = numObj[num] + 1 || 1;
 }
 
-const answer = solution(strArr, checkStrArr);
-console.log(answer.join(' '));
+for (let num of mArr) {
+  result.push(numObj[num] || 0);
+}
+
+console.log(result.join(" "));
