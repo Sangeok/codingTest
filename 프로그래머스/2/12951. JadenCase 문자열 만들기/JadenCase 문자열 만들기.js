@@ -3,18 +3,17 @@ function solution(s) {
     let sArr = s.split(" ");
     
     for(let str of sArr) {
-        let nowStr = str.split("");
-        
-        for(let i = 0; i<nowStr.length; i++) {
+        let currentStrArr = str.split("");
+        for(let i = 0; i<currentStrArr.length; i++) {
             if(i === 0) {
-                nowStr[i] = nowStr[i].toUpperCase();
+                currentStrArr[i] = currentStrArr[i].toUpperCase();
             } else {
-                nowStr[i] = nowStr[i].toLowerCase();
+                currentStrArr[i] = currentStrArr[i].toLowerCase();
             }
         }
-        
-        result.push(nowStr.join(''));
+        result.push(currentStrArr.join(''));
     }
     
-    return result.join(' ')
+    return result.join(" ")
+    
 }
