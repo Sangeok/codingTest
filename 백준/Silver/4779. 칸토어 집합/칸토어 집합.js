@@ -11,9 +11,7 @@ function getCanto(n) {
     return "-";
   }
 
-  const prevCanto = getCanto(n - 1);
+  let prevCanto = getCanto(n - 1);
 
-  const space = " ".repeat(prevCanto.length);
-
-  return prevCanto + space + prevCanto;
+  return prevCanto + " ".repeat(prevCanto.length) + prevCanto;
 }
