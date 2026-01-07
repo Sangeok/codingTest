@@ -3,18 +3,16 @@ function solution(people, limit) {
     
     let left = 0;
     let right = people.length-1;
-    
     let count = 0;
     
     while(left <= right) {
         if(people[left] + people[right] <= limit) {
-            // left, right 둘 다 태운 경우.
-            left++
-            right--
-            count++
+            // 맨 처음과 맨 마지막을 태운 경우
+            left++;
+            right--;
+            count++;
         } else {
-            // left, right 둘 다 태울 수 없는 경우.
-            // right는 혼자 태워야 함.
+            // 맨 마지막 사람을 태우지 못한 경우 => people[right]가 혼자 타야하는 경우
             right--;
             count++;
         }
