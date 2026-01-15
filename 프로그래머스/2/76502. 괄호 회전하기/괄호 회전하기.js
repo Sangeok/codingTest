@@ -1,0 +1,43 @@
+function solution(s) {
+    s = s.split('');
+    let count = s.length;
+    let result = 0;
+    
+    while(count > 0) {
+        if(isValid(s)) {
+            result++;
+        }
+        
+        let first = s.shift();
+        s.push(first);
+        count--;
+    }
+    
+    return result;
+}
+
+function isValid(arr) {
+    let stack = [];
+    let mapping = {
+        ")" : "(",
+        "]" : "[",
+        "}" : "{"
+    }
+    
+    for(let i = 0; i<arr.length; i++) {
+        if(arr[i] === "{" || arr[i] === "[" || arr[i] === "(") {
+            stack.push(arr[i]);
+        } else {
+            if(stack.length === 0) return false;
+            
+            const top = stack.pop();
+            
+            if(mapping[arr[i]] !== top) {
+                return false;
+            }
+        }
+    }
+    
+    return stack.length === 0;
+    
+}
