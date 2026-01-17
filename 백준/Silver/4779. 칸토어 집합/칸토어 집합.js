@@ -1,17 +1,16 @@
 var input = require("fs").readFileSync("/dev/stdin").toString().trim().split("\n");
 
-input.forEach((line) => {
-  if (!line) return;
+function getKanto(n) {
+  if (n === 0) return "-";
 
-  console.log(getCanto(Number(line)));
-});
+  let beforeKanto = getKanto(n - 1);
 
-function getCanto(n) {
-  if (n === 0) {
-    return "-";
-  }
-
-  let prevCanto = getCanto(n - 1);
-
-  return prevCanto + " ".repeat(prevCanto.length) + prevCanto;
+  return beforeKanto + " ".repeat(Math.pow(3, n - 1)) + beforeKanto;
 }
+
+input.forEach((n) => {
+  n = Number(n);
+  if (n !== 0 && !n) return;
+
+  console.log(getKanto(n));
+});
