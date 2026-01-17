@@ -1,22 +1,36 @@
 function solution(progresses, speeds) {
-    const newProgresses = progresses.map((item, i) => Math.ceil((100 - item)/speeds[i]));
+    let array = [];
+    let result = [];
     
-    let resultNumArr = [];
-    let result = [newProgresses[0]];
-    let count = 1;
-    
-    for(let i = 1; i<newProgresses.length; i++) {
-        if(result[0]>=newProgresses[i]) {
-            result.push(newProgresses[i]);
+    for(let i = 0; i<progresses.length; i++) {
+        let currentProgress = progresses[i];
+        let speed = speeds[i];
+        
+        let count = 0;
+        while(currentProgress < 100) {
+            currentProgress = currentProgress + speed;
+            count++;
         }
-        else {
-            resultNumArr.push(result.length);
-            result = [];
-            result.push(newProgresses[i]);
+        
+        array.push(count);
+    }
+    
+    let answer = [];
+    let count = 1;
+    let maxDay = array[0];
+    
+    for(let i = 1; i<array.length; i++) {
+        if(array[i] <= maxDay) {
+            count++;
+        } else {
+            answer.push(count);
+            count = 1;
+            maxDay = array[i];
         }
     }
     
-    resultNumArr.push(result.length);
+    answer.push(count);
+
+    return answer;
     
-    return resultNumArr;
 }
