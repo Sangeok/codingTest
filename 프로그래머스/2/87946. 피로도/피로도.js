@@ -1,24 +1,26 @@
 function solution(k, dungeons) {
-    let n = dungeons.length;
-    let maxCount = 0;
-    let visited = Array(n).fill(false);
+    let result = 0;
     
-    function DFS(tired, count) {
-        maxCount = Math.max(maxCount, count);
+    const visited = new Array(dungeons.length).fill(false);
+    
+    function dfs(currentK, count) {
+        result = Math.max(result, count);
         
-        for(let i = 0; i<n; i++) {
-            if(!visited[i] && tired >= dungeons[i][0]) {
+        for(let i = 0; i<dungeons.length; i++) {
+            let [minTired, consumeTired] = dungeons[i];
+            
+            if(!visited[i] && currentK >= minTired) {
                 visited[i] = true;
-                
-                DFS(tired-dungeons[i][1], count+1);
-                
+                dfs(currentK - consumeTired, count+1);
                 visited[i] = false;
             }
         }
     }
     
-    DFS(k,0);
+    dfs(k,0);
     
-    return maxCount;
-    
+    return result;
 }
+
+// 최소 피로도 : 탐험을 시작하기 위해 필요한 최소 필요도
+// 소모 피로도 : 던전 탐험을 마쳤을 때 소모됨.
