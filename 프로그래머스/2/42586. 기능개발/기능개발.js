@@ -1,36 +1,33 @@
 function solution(progresses, speeds) {
-    let array = [];
-    let result = [];
+    let restDay = [];
     
     for(let i = 0; i<progresses.length; i++) {
         let currentProgress = progresses[i];
-        let speed = speeds[i];
-        
+        let currentSpeed = speeds[i];
         let count = 0;
-        while(currentProgress < 100) {
-            currentProgress = currentProgress + speed;
-            count++;
-        }
         
-        array.push(count);
+        while(currentProgress < 100) {
+            currentProgress = currentProgress + currentSpeed;
+            count++;
+        }
+        restDay.push(count);
     }
     
-    let answer = [];
+    let maxDay = restDay[0];
     let count = 1;
-    let maxDay = array[0];
+    let result = [];
     
-    for(let i = 1; i<array.length; i++) {
-        if(array[i] <= maxDay) {
-            count++;
-        } else {
-            answer.push(count);
+    for(let i = 1; i<restDay.length; i++) {
+        if(restDay[i] > maxDay) {
+            result.push(count);
             count = 1;
-            maxDay = array[i];
+            maxDay = restDay[i];
+        } else {
+            count++;
         }
     }
     
-    answer.push(count);
-
-    return answer;
+    result.push(count)
     
+    return result
 }
