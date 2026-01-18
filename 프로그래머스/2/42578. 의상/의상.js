@@ -9,14 +9,9 @@ function solution(clothes) {
     }
     
     for(let [key, value] of Object.entries(obj)) {
-        result = result * (value+1);
+        result = result * (value + 1);
     }
     
     return result - 1;
     
-    
 }
-
-// 2 1 => 5 (2+1) X (1+1) - 1;
-
-// 
