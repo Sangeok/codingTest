@@ -1,24 +1,24 @@
 function solution(k, dungeons) {
-    let n = dungeons.length;
-    let maxCount = 0;
-    let visited = Array(n).fill(false);
+    let visited = new Array(dungeons.length).fill(false);
+    let max = 0;
     
-    function DFS(tired, count) {
-        maxCount = Math.max(maxCount, count);
+    DFS(k, 0);
+    
+    function DFS(restTired, count) {
+        max = Math.max(max, count);
         
-        for(let i = 0; i<n; i++) {
-            if(!visited[i] && tired >= dungeons[i][0]) {
+        for(let i = 0; i<dungeons.length; i++) {
+            let [needsTired, consumeTired] = dungeons[i];
+            
+            if(!visited[i] && needsTired <= restTired) {
                 visited[i] = true;
-                
-                DFS(tired-dungeons[i][1], count+1);
-                
+                DFS(restTired - consumeTired, count+1);
                 visited[i] = false;
             }
         }
     }
     
-    DFS(k,0);
-    
-    return maxCount;
+    return max;
     
 }
+
