@@ -3,25 +3,27 @@ var input = require("fs").readFileSync("/dev/stdin").toString().trim().split(" "
 let N = Number(input[0]);
 let M = Number(input[1]);
 
-let visit = new Array(N + 1).fill(false);
+let visited = new Array(N + 1).fill(false);
+
 let output = [];
 let result = "";
 
-dfs(0, []);
+DFS(0);
+
 console.log(result);
 
-function dfs(depth) {
+function DFS(depth) {
   if (depth === M) {
     result = result + output.join(" ") + "\n";
     return;
   }
 
   for (let i = 1; i <= N; i++) {
-    if (!visit[i]) {
-      visit[i] = true;
+    if (!visited[i]) {
+      visited[i] = true;
       output.push(i);
-      dfs(depth + 1);
-      visit[i] = false;
+      DFS(depth + 1);
+      visited[i] = false;
       output.pop();
     }
   }
