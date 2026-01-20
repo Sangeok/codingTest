@@ -1,29 +1,27 @@
 function solution(topping) {
-    let leftTopping = new Map();
+    let leftMap = new Map();
     let result = 0;
     
-    for(let item of topping) {
-        let getTopping = (leftTopping.get(item)) + 1 || 1;
-        leftTopping.set(item, getTopping);
-    }
+    topping.forEach((item) => {
+        let value = (leftMap.get(item) + 1) || 1;
+        leftMap.set(item, value)
+    })
     
-    let rightTopping = new Set();
+    let rightSet = new Set();
     
     for(let currentTopping of topping) {
-        let currentLeftTopping = leftTopping.get(currentTopping) - 1;
-        rightTopping.add(currentTopping);
+        rightSet.add(currentTopping);
         
-        if(currentLeftTopping >= 1) {
-            leftTopping.set(currentTopping, currentLeftTopping);
+        let leftToppingSize = leftMap.get(currentTopping);
+        
+        if(leftToppingSize === 1) {
+            leftMap.delete(currentTopping)
         } else {
-            leftTopping.delete(currentTopping);
+            leftMap.set(currentTopping, leftToppingSize-1);
         }
         
-        if(leftTopping.size === rightTopping.size) {
-            result++
-        }    
+        if(leftMap.size === rightSet.size) result++;
     }
     
     return result;
-    
 }
