@@ -1,19 +1,20 @@
 function solution(word) {
     let dictionary = [];
-    let vowles = ["A","E","I","O","U"];
+    let array = ["A", "E", "I", "O", "U"];
     
-    DFS("");
+    let str = "";
+    DFS(str, 0);
     
-    function DFS(currentWords) {
-        if(currentWords.length > 5) return;
+    function DFS(currentStr, count) {
+        if(count > 5) return;
         
-        if(currentWords !== "") dictionary.push(currentWords);
+        if(currentStr !== "") dictionary.push(currentStr);
         
-        for(let i = 0; i<vowles.length; i++) {
-            DFS(currentWords + vowles[i]);
+        for(let i = 0; i<array.length; i++) {
+            DFS(currentStr + array[i], count+1);
         }
     }
     
-    return dictionary.indexOf(word) + 1
+    return dictionary.indexOf(word) + 1;
     
 }
