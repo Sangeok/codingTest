@@ -8,7 +8,7 @@ function solution(clothes) {
         obj[key] = (obj[key] + 1) || 1
     }
     
-    for(let [key, value] of Object.entries(obj)) {
+    for(let [key,value] of Object.entries(obj)) {
         result = result * (value + 1);
     }
     
