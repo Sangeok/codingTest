@@ -13,21 +13,22 @@ function solution(progresses, speeds) {
         restDay.push(count);
     }
     
+    let result = [];
     let maxDay = restDay[0];
     let count = 1;
-    let result = [];
     
     for(let i = 1; i<restDay.length; i++) {
-        if(restDay[i] > maxDay) {
+        if(maxDay < restDay[i]) {
+            maxDay = restDay[i];
             result.push(count);
             count = 1;
-            maxDay = restDay[i];
         } else {
             count++;
         }
     }
     
-    result.push(count)
+    result.push(count);
     
-    return result
+    return result;
+    
 }
