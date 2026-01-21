@@ -1,6 +1,6 @@
 function solution(k, dungeons) {
-    let visited = new Array(dungeons.length).fill(false);
     let result = 0;
+    let visited = new Array(dungeons.length).fill(false);
     
     DFS(k, 0);
     
@@ -8,9 +8,9 @@ function solution(k, dungeons) {
         result = Math.max(result, count);
         
         for(let i = 0; i<dungeons.length; i++) {
-            let [needsTired, consumeTired] = dungeons[i];
+            let [needTired, consumeTired] = dungeons[i];
             
-            if(!visited[i] && currentTired >= needsTired) {
+            if(!visited[i] && currentTired >= needTired) {
                 visited[i] = true;
                 DFS(currentTired - consumeTired, count+1);
                 visited[i] = false;
