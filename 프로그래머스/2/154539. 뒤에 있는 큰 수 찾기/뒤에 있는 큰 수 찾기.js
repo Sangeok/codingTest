@@ -3,15 +3,12 @@ function solution(numbers) {
     let stack = [];
     
     for(let i = 0; i<numbers.length; i++) {
-        let currentNumber = numbers[i];
-        
-        while(stack.length > 0 && numbers[stack[stack.length-1]] < currentNumber) {
+        while(stack.length >= 1 && numbers[stack[stack.length-1]] < numbers[i]) {
             let index = stack.pop();
-            answer[index] = currentNumber;
+            answer[index] = numbers[i];
         }
-        
-        stack.push(i)
+        stack.push(i);
     }
     
-    return answer;
+    return answer
 }
