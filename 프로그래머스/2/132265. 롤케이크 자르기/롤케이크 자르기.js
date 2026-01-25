@@ -11,22 +11,22 @@ function solution(topping) {
     let rightSet = new Set();
     
     for(let i = 0; i<topping.length; i++) {
-        let currentKey = topping[i];
+        let key = topping[i];
         
-        let leftValue = leftMap.get(currentKey) - 1;
+        let leftCurrentValue = leftMap.get(key) - 1;
+        rightSet.add(key);
         
-        if(leftValue === 0) {
-            leftMap.delete(currentKey);
+        if(leftCurrentValue === 0) {
+            leftMap.delete(key);
         } else {
-            leftMap.set(currentKey, leftValue);
+            leftMap.set(key, leftCurrentValue);
         }
         
-        rightSet.add(currentKey);
         
-        if(leftMap.size === rightSet.size) {
-            result++;
-        }
+        if(rightSet.size === leftMap.size) result++;
+        
     }
     
     return result;
+    
 }
