@@ -6,8 +6,8 @@ function solution(order) {
         stack.push(box);
         
         while(stack.length > 0 && stack[stack.length-1] === order[idx]) {
-            stack.pop();
             idx++;
+            stack.pop();
         }
     }
     
