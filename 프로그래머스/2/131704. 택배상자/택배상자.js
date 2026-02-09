@@ -2,12 +2,12 @@ function solution(order) {
     let stack = [];
     let idx = 0;
     
-    for(let box = 1; box<=order.length; box++) {
+    for(let box = 1; box <=order.length; box++) {
         stack.push(box);
         
         while(stack.length > 0 && stack[stack.length-1] === order[idx]) {
-            idx++;
             stack.pop();
+            idx++;
         }
     }
     
