@@ -2,26 +2,26 @@ function solution(topping) {
     let leftTopping = new Map();
     let result = 0;
     
-    for(let i = 0; i<topping.length; i++) {
-        let key = topping[i];
+    for(let item of topping) {
+        let key = item;
         let currentValue = leftTopping.get(key) + 1 || 1;
         leftTopping.set(key, currentValue);
     }
-        
-    let rightTopping = new Set();
     
-    for(let i = 0; i<topping.length; i++) {
-        let key = topping[i];
-        let getLeftTopping = leftTopping.get(key) - 1;
+    let rightTopping = new Set();
+    for(let item of topping) {
+        let key = item;
+        let leftToppingValue = leftTopping.get(key) - 1;
         rightTopping.add(key);
         
-        if(getLeftTopping === 0) {
+        if(leftToppingValue === 0) {
             leftTopping.delete(key);
         } else {
-            leftTopping.set(key, getLeftTopping);
+            leftTopping.set(key, leftToppingValue);
         }
         
-        if(leftTopping.size === rightTopping.size) result++;
+        if(rightTopping.size === leftTopping.size) result++;
+        
     }
     
     return result;
