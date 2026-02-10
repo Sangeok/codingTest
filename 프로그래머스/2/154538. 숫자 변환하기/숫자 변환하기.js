@@ -1,28 +1,26 @@
 function solution(x, y, n) {
-    if(x === y) return 0;
+    if (x === y) return 0;
     
-    const queue = [[x,0]];
+    let queue = [[x,0]];
     let head = 0;
     
-    const visited = new Array(y+1).fill(0);
-    visited[x] = 1;
+    let visited = new Array(y+1).fill(false);
     
     while(head < queue.length) {
-        const [current, count] = queue[head++];
+        let [currentValue, count] = queue[head++];
         
-        let nextStep = [current + n, current * 2, current * 3];
-        
-        for(let next of nextStep) {
-            if(next === y) {
-                return count + 1;
-            }
+        let nextSteps = [currentValue + n, currentValue * 2, currentValue * 3];
+        for(let next of nextSteps) {
+            if(next === y) return count + 1;
             
-            if(next < y && visited[next] === 0) {
-                visited[next] = 1;
+            if(next < y && !visited[next]) {
+                visited[next] = true;
                 queue.push([next, count+1]);
             }
         }
+        
     }
     
     return -1;
+    
 }
