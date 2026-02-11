@@ -1,7 +1,5 @@
 function solution(numbers) {
-    const strNum = numbers.map(item => item.toString());
-    
-    strNum.sort((a,b) => b - a);
+    let strNum = numbers.map((item) => item.toString());
     
     strNum.sort((a,b) => {
         return (b+a) - (a+b);
@@ -9,5 +7,5 @@ function solution(numbers) {
     
     let result = strNum.join('');
     
-    return result[0] === "0" ? "0" : result
+    return result[0] === "0" ? "0" : result;
 }
