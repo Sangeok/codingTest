@@ -1,5 +1,5 @@
 function solution(x, y, n) {
-    if (x === y) return 0;
+    if(x === y) return 0;
     
     let queue = [[x,0]];
     let head = 0;
@@ -7,18 +7,18 @@ function solution(x, y, n) {
     let visited = new Array(y+1).fill(false);
     
     while(head < queue.length) {
-        let [currentValue, count] = queue[head++];
+        let [currentNum, count] = queue[head++];
         
-        let nextSteps = [currentValue + n, currentValue * 2, currentValue * 3];
+        let nextSteps = [currentNum + n, currentNum * 2, currentNum * 3];
+        
         for(let next of nextSteps) {
-            if(next === y) return count + 1;
+            if(y === next) return count + 1;
             
             if(next < y && !visited[next]) {
                 visited[next] = true;
                 queue.push([next, count+1]);
             }
         }
-        
     }
     
     return -1;
