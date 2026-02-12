@@ -7,5 +7,5 @@ function solution(numbers) {
     
     let result = strNum.join('');
     
-    return result[0] === "0" ? "0" : result;
+    return result[0] === "0" ? "0" : result
 }
