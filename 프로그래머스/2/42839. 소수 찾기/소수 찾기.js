@@ -1,25 +1,25 @@
 function solution(numbers) {
     let numSet = new Set();
     
-    let numArr = numbers.split('').map(Number);
+    let numArr = numbers.split("")
     
-    function getPrimeNum(arr, currentStr) {
-        if(currentStr !== "") numSet.add(Number(currentStr));
+    function getPrime(arr, currentStr) {
+        console.log("currentStr", currentStr)
+        if(currentStr !== "") numSet.add(Number(currentStr))
         
-        if(arr.length === 0) return ;
+        if(arr.length === 0) return;
         
         for(let i = 0; i<arr.length; i++) {
-            let currentNum = arr[i];
+            let currentChar = arr[i];
             let copyArr = [...arr];
-            copyArr.splice(i,1);
-            getPrimeNum(copyArr, currentStr + currentNum);
+            copyArr.splice(i, 1);
+            getPrime(copyArr, currentStr + currentChar);
         }
     }
     
-    getPrimeNum(numbers, "");
+    getPrime(numArr, "");
     
     return [...numSet].filter((item) => isPrime(item)).length;
-    
 }
 
 function isPrime(n) {
