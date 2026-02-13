@@ -2,18 +2,17 @@ function solution(number, k) {
     let stack = [];
     let removeNum = k;
     
-    for(let i = 0; i<number.length; i++) {
-        let currentNum = number[i];
-        
-        while(stack.length > 0 && removeNum > 0 && stack[stack.length-1] < currentNum) {
+    let numArr = number.split("")
+    for(let i = 0; i<numArr.length; i++) {
+        while(stack.length > 0 && removeNum > 0 && stack[stack.length-1] < numArr[i]) {
             stack.pop();
             removeNum--;
         }
         
-        stack.push(currentNum);
+        stack.push(numArr[i]);
     }
     
-    if (removeNum > 0) {
+    if(removeNum > 0) {
         stack.splice(-removeNum);
     }
     
