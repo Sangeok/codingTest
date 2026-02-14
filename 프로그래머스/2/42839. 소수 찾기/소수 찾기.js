@@ -1,11 +1,9 @@
 function solution(numbers) {
+    let numArr = numbers.split("");
     let numSet = new Set();
     
-    let numArr = numbers.split("")
-    
     function getPrime(arr, currentStr) {
-        console.log("currentStr", currentStr)
-        if(currentStr !== "") numSet.add(Number(currentStr))
+        if(currentStr !== "") numSet.add(Number(currentStr));
         
         if(arr.length === 0) return;
         
@@ -20,6 +18,7 @@ function solution(numbers) {
     getPrime(numArr, "");
     
     return [...numSet].filter((item) => isPrime(item)).length;
+    
 }
 
 function isPrime(n) {
